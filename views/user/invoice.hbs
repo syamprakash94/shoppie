@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+
+        body {
+            font-family: 'Maven Pro', sans-serif;
+            background-color: white
+        }
+
+        hr {
+            color: #0000004f;
+            margin-top: 5px;
+            margin-bottom: 5px
+        }
+
+        .add td {
+            color: #000000;
+            text-transform: uppercase;
+            font-size: 12px
+        }
+
+        .content {
+            font-size: 14px
+        }
+
+        .card {
+            background-color:aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5 mb-3"  style="height: 90vh;">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+                <div class="card" id="invoice" >
+                    <div class="d-flex flex-row p-2">
+                        <div class="d-flex flex-column"> <span class="font-weight-bold"> INVOICE</span>
+                            <small>{{products.DateIso}}</small>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="table-responsive p-2">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr class="add">
+                                    <td>To</td>
+                                    <td>From</td>
+                                </tr>
+                                <tr class="content">
+                                    <td class="font-weight-bold">{{products.deliveryDetails.name}}
+                                        <br>{{products.deliveryDetails.address}},<br>{{products.deliveryDetails.state}},{{products.deliveryDetails.pincode}}
+                                    </td>
+                                    <td class="font-weight-bold"> <br><i class="fa-brands fa-pied-piper-pp"></i> shoppie
+                                        Pvt.ltd <br>India</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr>
+                    <div class="products p-2">
+                        <table class="table table-borderless">
+                          
+                            <tbody>
+                                <tr class="add">
+                                    <td>Product Name</td>
+                                    <td>Quantity</td>
+                                    <td>Payment status</td>
+                                    <td class="text-center">Total</td>
+                                </tr>
+                                {{#each order}}
+                                <tr class="content">
+                                    <td>{{ this.product.brand}}</td>
+                                    <td>{{this.quantity}}</td>
+                                    <td>Success</td>
+                                    <td class="text-center">₹{{this.product.offerPrice}}</td>
+                                </tr>
+{{/each}}
+                            </tbody>
+                            
+                        </table>
+                        
+<hr>
+<div class="table-responsive ">
+                        <table class="table table-borderless">
+                            <tbody>
+                                  <tr class="add">
+                                    <td>Product Name</td>
+                                  
+                                    <td class="text-center" >Total</td>
+                                     <td class="text-center me-5">₹{{products.totalAmount}}</td>
+                                </tr>
+                               
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    </div>
+
+                
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="align-items: center; margin-left:45rem">
+            <button class="btn" id="downloadPdf"="">Download Invoice?<i class="fa-solid fa-download text-Info"></i></button>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    document
+        .getElementById("downloadPdf")
+        .addEventListener("click", function download() {
+            const element = document.getElementById("invoice");
+            html2pdf()
+                .from(element)
+                .save();
+        });
+</script>
+
+</html>

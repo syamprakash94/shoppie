@@ -1,0 +1,300 @@
+<section class=" gradient-custom">
+  <h5 class="mb-0 text-dark mt-2"
+    style="padding-left: 5rem;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 600; color: rgb(124, 124, 124);">
+    Items In Your Cart</h5>
+  <div class="container">
+    <div class="row d-flex justify-content-center my-4">
+      <div class="col-md-8">
+        <div class="card mb-4">
+
+          {{!-- <div class="card-header py-3 bg-dark"> --}}
+            {{!-- <h5 class="mb-0 text-light">Cart - {{cartCount}} items</h5> --}}
+            {{!-- </div> --}}
+          <div class="card-body">
+            <!-- Single item -->
+            <div class="row ">
+              {{#each products}}
+
+              <div class="col-lg-3 col-md-12 mb-4  mt-2 mb-lg-0">
+                <!-- Image -->
+                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light" style="">
+                  <img src="/images/{{product.img.[1]}}" class="w-100  " s alt="Blue Jeans Jacket" />
+
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                  </a>
+                </div>
+                <!-- Image -->
+              </div>
+
+              <div class="col-lg-5 col-md-6 mb-4 mt-2 mb-lg-0">
+                <!-- Data -->
+                <p><strong>{{this.product.brand}}</strong></p>
+                <p>{{this.product.description}}</p>
+                {{!-- <p>Color: blue</p> --}}
+                {{!-- <p>Size:{{this.product.size}}</p> --}}
+                <button type="button" class="btn btn-danger btn-sm me-1 mt-5" data-mdb-toggle="tooltip"
+                  title="Remove item" onclick="removeCartProduct('{{this._id}}','{{this.product._id}}')">
+                  <i class="fas fa-trash"></i>
+                </button>
+                {{!-- <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
+                  title="Move to the wish list">
+                  <i class="fas fa-heart"></i>
+                </button> --}}
+                <!-- Data -->
+              </div>
+
+
+              <div class="col-lg-4 col-md-6 mb-4 mt-2 mb-lg-0 ">
+                <!-- Quantity -->
+                <div class="d-flex mb-4">
+                  <label class="form-label ms-3 mt-3 me-3" for="form1"></label>
+
+                  <button class="cart-item-count mr-3 mt-3  text-light fs-6 bg-danger" style="border-color: white;"
+                    onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
+                  <span class="fs-5 mt-3 me-3" id="{{this.product._id}}">{{this.quantity}}</span>
+                  <button class="cart-item-count mr-3 mt-3 text-light  fs-6 bg-danger" style="border-color:whitesmoke;"
+                    onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',+1)">+</button>
+
+                  {{!-- <a href="#" class="fs-2 mb-3 me-2 text-decoration-none text-success">+</a>
+                  <div class="form-outline mt-2">
+                    <input id="form1" name="quantity" value="{{this.quantity}}" type="button" class="form-control" />
+
+                  </div> --}}
+                  {{!-- <a href="#" class="fs-2 mb-3 ms-2 text-decoration-none text-danger">-</a> --}}
+
+                </div>
+                <!-- Quantity -->
+
+                <!-- Pr ice -->
+
+                <p class="text-start text-md-center mt-5">
+                  <strong>₹{{this.product.offerPrice}}</strong>
+                </p>
+
+
+                <!-- Price -->
+              </div>
+              {{/each}}
+            </div>
+            <hr>
+            <!-- Single item -->
+          </div>
+        </div>
+        {{!-- <div class="card mb-4">
+          <div class="card-body">
+            <p><strong>Expected shipping delivery</strong></p>
+            <p class="mb-0">12.10.2020 - 14.10.2020</p>
+          </div>
+        </div> --}}
+        <div class="card mb-4 mb-lg-0">
+          <div class="card-body">
+            <p><strong>We accept</strong></p>
+            <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+              alt="Visa" />
+            <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+              alt="American Express" />
+            <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+              alt="Mastercard" />
+            {{!-- <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.webp"
+              alt="PayPal acceptance mark" /> --}}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+
+        <div class="checkout-sidebar">
+          <div class="checkout-sidebar-coupon">
+            <div class="row">
+              {{!-- {{#if userDetails.wallet}} --}}
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-body1">
+                    <div class="card-body floart-end">
+                      <div class="text-center">
+                        <div>
+                          <img style="height: 40px;"
+                            src="https://lh3.googleusercontent.com/ohLHGNvMvQjOcmRpL4rjS3YQlcpO0D_80jJpJ-QA7-fQln9p3n7BAnqu3mxQ6kI4Sw"
+                            alt="wallet">
+                        </div>
+
+
+                        <span>Wallet Balance = ₹{{user1.wallet}} </span>
+
+
+                        <input type="text" id="userName" value="{{user.name}}" disabled hidden>
+                        <input type="text" id="userPhone" value="{{user.phoneNumber}}" disabled hidden>
+                        <input type="text" id="userEmail" value="{{user.email}}" disabled hidden>
+                      </div>
+                    </div>
+                    <input type="text" id="Totalpro" name="Totalpro" value="{{totalValue}}" hidden>
+                    <div class="form-input form text-center">
+                      <input type="text" placeholder="₹ Enter the amount" id="wallet" name="walletAmount"
+                        style="width: 50%; height: 36px; padding-right: 1px;" />
+                    </div>
+                    <div class="button text-center p-4">
+                      <a id="couponBtn" onclick="applayWallet()" class="btn bg-success text-light"
+                        style=" height: 34px;padding: 6px; ">apply</a>
+                    </div>
+                    <div class="alert alert-danger" style="display: none;" id="valueNotCorrect" role="alert">
+                      Enter the Correct Amount
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center p-3">
+
+                <p style="color: red; font-size: 12px; font-family: system-ui;">You can Choose only a Coupon or
+                  Wallet
+                  at a Time</p>
+
+              </div>
+
+
+              <div class="card mb-4">
+                <div class="card-header py-3 bg-light">
+                  <h5 class="mb-0 text-dark">Summary</h5>
+                </div>
+                <div class="card-body">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                      Product Total
+                      <span>₹{{totalValue}}</span>
+                    </li>
+
+                   <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                      Reduced Amount
+                      <td><span id="discountamount">0</span></td>
+                    </li> 
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                      Shipping
+                      <span>Gratis</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                      <div>
+                        <strong>Total amount</strong>
+                        <strong>
+                          <p class="mb-0">(including VAT)</p>
+                        </strong>
+                      </div>
+
+                      {{#if wallet}}
+                      <span><strong>₹<span id="total">{{total}}</span></strong></span>
+                      {{else}}
+                      <span><strong>₹<span id="total">{{totalValue}}</span></strong></span>
+                      {{/if}}
+                    </li>
+                  </ul>
+
+                  <button type="button" class="btn btn-warning btn-lg btn-block text-light">
+                    <a href="/address-selection" class="text-decoration-none text-dark"> Go to checkout</a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</section>
+<script>
+  function changeQuantity(cartId, proId, userId, count) {
+    let quantity = parseInt(document.getElementById(proId).innerHTML)
+    count = parseInt(count)
+    $.ajax({
+      url: '/change-product-quantity',
+      data: {
+        user: userId,
+        cart: cartId,
+        product: proId,
+        count: count,
+        quantity: quantity
+      },
+      method: 'post',
+      success: (response) => {
+        if (response.removeProduct) {
+          alert("product Removed From Cart")
+          location.reload()
+        } else {
+          document.getElementById(proId).innerHTML = quantity + count
+          document.getElementById('total').innerHTML = response.total
+
+
+        }
+
+      }
+    })
+  }
+
+</script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+  function removeCartProduct(cardId, proId) {
+
+
+    swal({
+      title: "Are you sure?",
+      text: "Do you want to delete the offer?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          $.ajax({
+            url: "/remove-product-cart",
+            method: "POST",
+            data: {
+              cart: cardId,
+              product: proId
+            },
+            success: (result) => {
+              if (result) {
+                swal("Offer deleted Successfully", {
+                  icon: "success",
+                });
+              }
+              location.href = '/cart'
+            }
+          });
+        }
+      })
+  }
+
+  function applayWallet() {
+    
+    let walletval = document.getElementById('wallet').value
+    let ttlpro = document.getElementById('Totalpro').value
+  
+    $.ajax({
+      url: '/applayWallet',
+      data: {
+        wallet: walletval,
+        Total: ttlpro
+      },
+      method: 'post',
+      success: (response) => {
+        console.log(response.walletAmount)
+
+        if (response.walletSuccess) {
+          document.getElementById('discountamount').innerHTML ='-₹'+response.walletAmount;
+          document.getElementById('total').innerHTML = response.total;
+          document.getElementById("ttlprc").innerHTML = response.total;
+          
+ 
+          $('#discount').show()
+          $('#discountLabel').show()
+          $('#discounttd').show()
+
+        } else {
+          $('#valueNotCorrect').show()
+        }
+
+      }
+    })
+  }
+
+</script>

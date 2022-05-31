@@ -1,0 +1,411 @@
+<div class="container">
+  <form   id="checkout-form" method="post">
+<div class="row mt-5">
+  <div class="col-md-8 mb-4">
+    <div class="card mb-4">
+      <div class="card-header py-3 bg-light">
+        <h5 class="mb-0 text-dark">ADD ADDRESS</h5>
+      </div>
+      <div class="card-body bg-light">
+        
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+
+
+              <div class="form-outline">
+                <input type="text" id="userName" name="name" class="form-control" onkeyup="validateName()" required />
+               <p id="Name-error" class="error text-danger"></p>
+                <label class="form-label" for="form7Example1">Name</label>
+                
+              </div>
+
+
+               <input type="text" id="userName" value="{{user._id}}" name="userId" class="form-control" hidden/>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="number" id="form7Example2" name="phoneNumber" class="form-control"required />
+                <label class="form-label" for="form7Example2">Phone Number</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input -->
+          <div class="row mb-4">
+            <div class="col">
+          <div class="form-outline mb-4">
+            <input type="text" id="userState" name="state" class="form-control" onkeyup="validateState()" required />
+            <p id="State-error" class="error text-danger"></p>
+            <label class="form-label" for="form7Example3">State</label>
+             
+          </div>
+          </div>
+
+          <!-- Text input -->
+           <div class="col">
+          <div class="form-outline mb-4">
+            <input type="number" id="form7Example4" name="pincode" class="form-control" required />
+            <label class="form-label" for="form7Example4">Pincode</label>
+          </div>
+           </div>
+           </div>
+
+          <!-- Email input -->
+           <div class="row mb-4">
+            <div class="col">
+          <div class="form-outline mb-4">
+            <input type="text" id="userCity" name="city" class="form-control" onkeyup="validateCity()" required />
+            <p id="City-error" class="error text-danger"></p>
+            <label class="form-label" for="form7Example5">City</label>
+          </div>
+        </div>
+          <!-- Number input -->
+          <div class="col">
+          <div class="form-outline mb-4">
+            <input type="text" id="form7Example6" name="house" class="form-control" required />
+            <label class="form-label" for="form7Example6">House No,Building Name</label>
+          </div>
+          </div>
+          </div>
+
+          <!-- Message input -->
+          <div class="form-outline mb-4">
+            <textarea class="form-control" id="form7Example7" name="address" rows="4" required></textarea>
+            <label class="form-label" for="form7Example7">Address information</label>
+          </div>
+
+          <!-- Checkbox -->
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card mb-4">
+      {{!-- <div class="card-header py-3 bg-dark text-light"> --}}
+        {{!-- <h5 class="mb-0">Amount</h5> --}}
+
+      {{!-- </div> --}}
+      <div class="card-body">
+
+
+        
+{{!-- coupon --}}
+        <div class="checkout__order " style="background-color:aliceblue ;" >
+          
+          <div class="card-body">
+            <div class="single-form form-default">
+              <hr>
+              <h3 class="mt-3 mb-5" style="color: rgb(52, 50, 50);">You Get More Offers....!</h3>
+              <div class="form-input form">
+                <form action="/applycoupon" id="coupon"></form>
+               <input type="text" id="coupons" form="coupon" placeholder="Enter Coupon code" name="code" class="form-control form-control-lg">
+               <p class="text-danger" id="userAll"></p>
+               </div>
+              <div class="button mt-3 mb-5">
+                <button type="submit" onclick="selectcoupon()" class="btn btn-success float-end mt-1" form="coupon">Apply</button>
+                </div>
+  
+              {{!-- Error handling of coupons --}}
+              <div class="mt-2">
+                <div class="alert alert-danger" style="display: none;" id="couponUsed" role="alert">
+                  This Coupon was redeemed
+                </div>
+                <div class="alert alert-danger" style="display: none;" id="couponInvalid" role="alert">
+                  This Coupon is invalid
+                </div>
+                <div class="alert alert-success" style="display: none;" id="couponSuccess" role="alert">
+                  Coupon Applied Successfully
+                </div>
+                <div class="alert alert-warning" style="display: none;" id="couponExpired" role="alert">
+                  Sorry!!! Your Coupon has been Expired
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <hr>
+
+{{!-- 
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+            Products items:
+            <span>$53.98</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+            Shipping
+            <span>free</span>
+          </li>
+           <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+            Delivery charge
+            <span>free</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+            <div>
+              <strong>Total amount</strong>
+              <strong>
+                <p class="mb-0">(including GST)</p>
+              </strong>
+            </div>
+            <span><strong>${{total}}</strong></span>
+          </li>
+        </ul> --}}
+
+
+        <ul class="checkout_total_all">
+          <li class="fs-5 ml-3" style="list-style-type:none;  ">Total Amount :<span id="totalPrice"  style="margin-left:  97px ;">₹{{total}}</span></li>
+   <li class="fs-5 ml-3 " style="list-style-type:none;">Reduced Amount <span id="discountamount" style="margin-left:  67px ;"  >₹{{total}}</span></li>
+<hr>
+          {{#if Allcoupons}}
+          <p id="total">Amount Payable:</p>
+
+          {{else}}
+          <li class="fs-5 ml-3 " style="list-style-type:none; ">Amount Payable :<span id="price" style="margin-left:  74px ;">₹{{total}}</span>
+          </li>
+
+          {{/if}}
+        </ul>
+
+     
+      </div>
+
+
+         <div class="card-header py-3  text-dark">
+        <h5 class="mb-0">Payment Method</h5>
+      </div>
+      <div class="card-body mt-4">
+ 
+  <div class="form-check">
+  <input type="radio" class="form-check-input" id="radio1" name="payment-method" value="COD" checked><strong>Cash On Delivery</strong>
+  <label class="form-check-label" for="radio1"></label>
+  </div>
+        
+          <div class="form-check mt-4">
+  <input type="radio" class="form-check-input" id="radio1" name="payment-method" value="ONLINE" checked><strong>Online Pyment</strong>
+  <label class="form-check-label" for="radio1"></label>
+</div>
+       <div class="form-check mt-4">
+  <input type="radio" class="form-check-input" id="radio1" name="payment-method" value="PAYPAL" checked><strong>Paypal</strong>
+  <label class="form-check-label" for="radio1"></label>
+</div>
+        </ul>
+        <button type='submit'  class="btn btn-warning btn-lg btn-block mt-4">
+          PLACE ORDER
+        </button>
+      </div>
+     
+    </div>
+  </div>
+</div>
+ </form>
+</div>
+
+
+
+<script>
+  $("#checkout-form").submit((e)=>{
+    e.preventDefault()
+    $.ajax({
+      url:'/addNewAddress',
+      method:'post',
+      data:$('#checkout-form').serialize(),
+      success:(response)=>{
+       
+       
+         if(response.codSuccess) {
+        
+        location.href='/order-success'
+         }else if(response.paypal){
+           location.href=response.url
+
+         }
+         else{
+             razorpayPayment(response)
+         }
+       } 
+    })
+  })
+  function razorpayPayment(order) {
+    var options = {
+      "key": "rzp_test_dr0FHEhpWl7aRM", // Enter the Key ID generated from the Dashboard
+      "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "Shoppie",
+      "description": "Test Transaction",
+      "image": "https://example.com/your_logo",
+      "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": function (response) {
+
+
+        verifyPayment(response, order)
+      },
+      "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+      },
+      "notes": {
+        "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+  }
+  function verifyPayment(payment, order) {
+    $.ajax({
+      url: '/verify-payment',
+      data: {
+        payment,
+        order
+      },
+      method: 'post',
+      success: (response) => {
+        if (response.status) {
+          location.href = '/order-success'
+        }else if(response.paypal){
+          location.href=response.url;
+        }
+         else {
+          alert("payment failed")
+        }
+      }
+    })
+  }
+
+
+
+ function selectcoupon(){
+var codes=document.getElementById('coupons').value;
+console.log(codes)
+$.ajax({
+  url:'/applycoupon',
+    data:{
+      code:codes,
+    },
+    method:'post',
+    success:(response)=>{
+           if(response.user){
+          document.getElementById('userAll').innerHTML='already used';
+        }else if(response.offerprice){
+          console.log(response.offerprice)
+            document.getElementById('price').innerHTML=response.offerprice;
+   document.getElementById('discountamount').innerHTML ='-₹'+response.discountVal;
+        }else
+        {
+           document.getElementById('userAll').innerHTML='cuopon invalid';
+        }
+    
+  }
+})
+  }
+</script>
+
+<script>
+var nameError=document.getElementById('Name-error');
+var stateError=document.getElementById('State-error');
+var cityError=document.getElementById('City-error');
+var PasswordError=document.getElementById('Password-error');
+var phoneError=document.getElementById('Phone-error')
+var submitError=document.getElementById('Submit-error');
+var conformPassword=document.getElementById('rePassword-error')
+
+
+
+function validateName(){
+    var name = document.getElementById('userName').value;
+
+    if(name.length==0){
+        nameError.innerHTML= 'Name is required';
+        return false;
+    }
+    if(!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*/)){
+        nameError.innerHTML='Write full name';
+        return false;
+    }
+    nameError.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
+    return true;
+}
+
+function validateState(){
+    var state = document.getElementById('userState').value;
+
+    if(state.length==0){
+        stateError.innerHTML= 'State is required';
+        return false;
+    }
+    if(!state.match(/^[A-Za-z]*\s{1}[A-Za-z]*/)){
+        stateError.innerHTML='Write full name';
+        return false;
+    }
+    stateError.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
+    return true;
+}
+ function validateCity(){
+    var city = document.getElementById('userCity').value;
+
+    if(city.length==0){
+        cityError.innerHTML= 'State is required';
+        return false;
+    }
+    if(!city.match(/^[A-Za-z]*\s{1}[A-Za-z]*/)){
+        cityError.innerHTML='Write full name';
+        return false;
+    }
+    cityError.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
+    return true;
+}
+function validatePassword(){
+    var message = document.getElementById('password').value;
+    var required=5;
+    var left=required-message.length;
+
+    if(left>0){
+      PasswordError.innerHTML=left+'more character required';
+        return false;
+    }
+
+   PasswordError.innerHTML= '<i class="fa-solid fa-circle-check text-success"></i>';
+    return true;
+}
+function rePassword(){
+  var password=document.getElementById('password').value;
+  var password1=document.getElementById('conformPassword').value;
+  if(password!=password1){
+    conformPassword.innerHTML='password is not match';
+    return false;
+  }
+    conformPassword.innerHTML='<i class="fa-solid fa-circle-check text-success"></i>';
+    return true;
+  
+}
+function validatePhoneNUmber(){
+    var message = document.getElementById('phoneNumber').value;
+    var required=10;
+    var left=required-message.length;
+
+    if(left>0){
+      phoneError.innerHTML=left+'more character required';
+        return false;
+    }
+
+  phoneError.innerHTML= '<i class="fa-solid fa-circle-check text-success"></i>';
+    return true;
+}
+
+
+function validateForm(){
+    if(!validateName() || !validateEmail() || !validatePassword() || !validatePhoneNUmber() || !rePassword()){
+
+        // submitError.style.display='block';
+        submitError.innerHTML='Please fix error to submit';
+        setTimeout(function(){submitError.style.display='none';},5000);
+        return false;
+    }
+}
+
+</script>

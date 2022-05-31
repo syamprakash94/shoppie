@@ -1,0 +1,86 @@
+<script defer src="https://cdn.crop.guide/loader/l.js?c=ZMQSTD"></script>
+
+
+<section class="section mt-5" style="background-color: aliceblue; width: 95%; margin-left: 32px;">
+  <div class="container mt-5">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">no</th>
+          <th scope="col">image</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each banner}}
+        <tr>
+          <th scope="row">{{inc @index}}</th>
+          <td><img style="width: 50px; hieght: 50px;" src="/images/{{this.img.[0]}}" alt=""> 
+          <img style="width: 50px; hieght: 50px;" src="/images/{{this.img.[1]}}" alt=""> 
+          <img style="width: 50px; hieght: 50px;" src="/images/{{this.img.[2]}}" alt=""> </td>
+
+          <td>
+            <button class="btn btn-light text-danger" onclick="deleteBanner('{{this._id}}')">delete</button>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+
+
+
+
+
+{{!-- adding --}}
+<section class="section mt-5" style="background-color: aliceblue; width: 55%; margin-left: 18rem;">
+  <h3 style="color: rgb(91, 90, 90);">Add Banner</h3>
+  <div class="container">
+    <div class="row">
+      <form action="/admin/add-banner" method="post" enctype="multipart/form-data">
+        <div class="mt-3">
+          <label for="" class="form-label">image:</label>
+          <input type="file" name="image" class="form-control" id="exampleInputPassword1" required multiple>
+        </div>
+        <button type="submit" class="btn btn-warning mt-3">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+{{!-- sweet alert --}}
+<script>
+  function deleteBanner(bannerId) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: "delete-banner/" + bannerId,
+          method: "get",
+          success: (response) => {
+            if (response.status) {
+              Swal.fire(
+                "Deleted!",
+                "Your product has been deleted.",
+                "success"
+              ).then((result) => {
+                if (result.isConfirmed) {
+                  location.reload()
+                }
+              });
+            }
+          },
+        });
+      }
+    });
+  }
+</script>

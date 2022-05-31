@@ -1,0 +1,55 @@
+
+
+
+
+<section class="section mt-5" style="background-color: aliceblue; width: 95%; margin-left: 32px;">
+    <div class="container col-md-12" style=" margin-top: 95px;">
+        <div>
+          <div class="row float-start" style="font-weight: 900;font-size: x-large; color: rgb(63, 61, 61);"><a>View Products</a></div>
+                <div class="row float-end">
+            <a href="/admin/add-product" class="btn btn-warning float-end" >Add Product</a>
+
+            </div>
+        </div>
+        <table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">brand</th>
+      <th scope="col">Category</th>
+      <th scope="col">description</th>
+      <th scope="col">Orginal Price</th>
+      <th scope="col">Offer Price</th>
+      <th scope="col">Offer Percentage</th>
+      
+      <th>Image</th>
+      <th>Image2</th>
+      <th>Image3</th>
+      <th scope="col">Options</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+      {{#each products}}
+       
+    <tr>
+      <th scope="row">{{inc @index}}</th>
+      <td>{{this.brand}}</td>
+      <td>{{this.category}}</td>
+      <td>{{this.description}}</td>
+      <td>{{this.orginalPrice}}</td>
+      <td>{{this.offerPrice}}</td>
+      <td>{{this.offerpercentage}}</td>
+      <td><img style="width: 50px; height: 50px;" src="/images/{{this.img.[0]}}" alt=""></td>
+      <td><img style="width: 50px; height: 50px;" src="/images/{{this.img.[1]}}" alt=""></td>
+      <td><img style="width: 50px; height: 50px;" src="/images/{{this.img.[2]}}" alt=""></td>
+
+      <td><a href="/admin/edit-product/{{this._id}}" class="btn btn-light">Edit</a>
+        <a href="/admin/delete-product/{{this._id}}" class="btn btn-light text-danger" onclick=" return confirm('Are you want to delete {{this.name}} ?') ">Delete</a></td>
+    </tr>
+    {{/each}}
+   
+  </tbody>
+</table>
+    </div>
+</section>

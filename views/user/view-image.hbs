@@ -1,0 +1,321 @@
+<section>
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-12 co-xxl-6 col-xl-6 col-md-6 col-sm-12 ">
+                <div class="zoom mx-auto" id="img-container">
+
+                    <img class="zoom1" src="/images/{{product.img.[1]}}" style="margin-left:35px">
+                </div>
+                <div class="flex" style="display: flex;">
+                    {{#each product.img}}
+                    <div class="card mt-3" style="width: 8rem; margin-left:35px">
+                        <img src="/images/{{this}}" class="zoom card-img-top" alt="...">
+                    </div>
+
+                    {{/each}}
+
+
+                </div>
+            </div>
+            <div class="col-12 co-xxl-6 col-xl-6 col-md-6 col-sm-12">
+
+                <p> <span class=" "
+                        style="font-size:larger;font-weight: 700;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{product.brand}}</span>
+                </p>
+                <p> <span class="text-success fs-3">₹{{product.offerPrice}}</span><span
+                        class="text-danger text-decoration-line-through fs-5 ps-3">₹{{product.orginalPrice}}</span>
+                    <span class="fs-3">{{product.offerpercentage}}%off</span>
+                </p>
+                <hr>
+                <p><span class="fs-5"> Available offers </span><br>
+
+                    <i class="bi bi-bookmark-fill pe-1 text-success"></i>Bank Offer10% off on Slice Cards, up to ₹200.
+                    On orders of ₹1000 and <a href="#" class="text-decoration-none">aboveT&C</a><br>
+
+                    <i class="bi bi-bookmark-fill pe-1 text-success"></i>Bank Offer5% Cashback on Flipkart Axis Bank a
+                    <a href="#" class="text-decoration-none">CardT&C</a> <br>
+
+                    <i class="bi bi-bookmark-fill pe-1 text-success"></i>Partner OfferBuy this product and get upto ₹500
+                    off on Flipkart Furniture <a href="#" class="text-decoration-none"> </a><br>
+
+                    <i class="bi bi-bookmark-fill pe-1 text-success"></i>Partner OfferSign up for Men's card Pay Later
+                    and get Card worth ₹100* <a href="#" class="text-decoration-none"></a><br>
+                    <hr>
+                <p> <span class=" " style="font-size:small;">Description:{{product.description}}</span></p>
+                {{!-- <div class="dropdown">
+                    Available:
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        size
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="/cart">small</a></li>
+                        <li><a class="dropdown-item" href="#">medium</a></li>
+                        <li><a class="dropdown-item" href="#">large</a></li>
+                        <li><a class="dropdown-item" href="#">extra large</a></li>
+                    </ul>
+                </div> --}}
+                </span>
+                </p>
+
+
+                <div class="text-center">
+                    <button type="submit" onclick="addToCart('{{product._id}}')" class=" btn btn-warning float-start"
+                        id="cartCount">Add To Cart</button>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+    </div>
+
+
+</section>
+
+<script>
+    var options = {
+        width: 400,
+        height: 400,
+        zoomWidth: 400,
+        offset: { vertical: 0, horizontal: 10 },
+        scale: .5
+    }
+
+    new ImageZoom(document.getElementById("img-container"), options)
+</script>
+
+
+
+<script>
+    function addToCart(proId) {
+        $.ajax({
+            url: '/add-to-cart/' + proId,
+            method: 'get',
+            success: (response) => {
+                if (response.status) {
+                    let count = $('#cartCount').html()
+                    count = parseInt(count) + 1
+                    $("#cartCount").html(count)
+                }
+
+            }
+        })
+    }
+</script>
+<style>
+    #img-container {
+        z-index: 2;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $(".zoom").hover(function () {
+            $(".zoom1").attr('src', $(this).attr('src'
+            ))
+
+        })
+    })
+</script>
+
+<div class="eight mt-5">
+  <h1 class="text-secondary">SimilarProducts</h1>
+</div>
+<style>
+.eight h1 {
+  text-align:center;
+ 
+  text-transform:uppercase;
+  font-size:26px; letter-spacing:1px;
+  
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 16px 0;
+  grid-gap: 22px;
+}
+
+.eight h1:after,.eight h1:before {
+  content: " ";
+  display: block;
+  border-bottom: 2px solid #ccc;
+  background-color:#f8f8f8;
+}
+
+.eight h1 {
+  text-align:center;
+ 
+  text-transform:uppercase;
+  font-size:26px; letter-spacing:1px;
+  
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 16px 0;
+  grid-gap: 22px;
+}
+
+.eight h1:after,.eight h1:before {
+  content: " ";
+  display: block;
+  border-bottom: 2px solid #ccc;
+  background-color:#f8f8f8;
+}
+</style>
+
+
+    <div class="container">
+<div class="row">
+	{{#each relProducts}}
+    <div class="col-md-3 col-sm-6 mt-5 mb-5">
+        <div class="product-grid">
+            <div class="product-image">
+                <a href="/view-image/{{this._id}}">
+                    <img class="pic-1" src="/images/{{this.img.[0]}}">
+                </a>
+                
+                <ul class="product-links">
+                    {{!-- <li><a href="#"><i class="far fa-heart mt-3"></i></a></li> --}}
+                    <li><a onclick="addToCart('{{this._id}}')"><i class="fas fa-shopping-cart mt-3 ms-3"></i></a></li>
+                    <li><a href="#"><i class="fa fa-random mt-3 ms-3"></i></a></li>
+                    <li><a href="/view-image/{{this._id}}"><i class="fa fa-eye mt-3 ms-3"></i></a></li>
+                </ul>
+            </div>
+            <div class="product-content" style="background-color:rgb(239, 238, 238);">
+				<p class="text-secondary">{{this.description}}</p>
+			
+                <h3 class="title">{{this.brand}}</h3>
+                <ul class="rating">
+                    <li class="fas fa-star text-warning"></li>
+                    <li class="fas fa-star text-warning"></li>
+                    <li class="fas fa-star text-warning"></li>
+                    <li class="far fa-star"></li>
+                    <li class="far fa-star "></li>
+                </ul>
+                <div class="price">
+				<span class="text-danger">₹{{this.orginalPrice}}</span>
+				 ₹{{this.offerPrice}}
+				</div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    <hr>
+</div>
+</div>
+<style>
+	.product-grid{
+    font-family: 'Antic Slab', serif;
+  
+    transition: all 0.3s ease 0s;
+}
+.product-grid:hover{ box-shadow: 0 0 10px rgba(0,0,0,0.2); }
+.product-grid .product-image{
+    overflow: hidden;
+    position: relative;
+}
+.product-grid .product-image a.image{ display: block; }
+.product-grid .product-image img{
+    width: 100%;
+    height: auto;
+}
+.product-grid .product-sale-label{
+    color: #fff;
+    background-color: #76b713;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 10px 6px 9px;
+    position: absolute;
+    left: 7px;
+    top: 7px;
+}
+.product-grid .product-links{
+    width: 50px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transition: all 0.4s ease;
+}
+.product-grid:hover .product-links{ opacity: 1; }
+.product-grid .product-links li{
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transform: translateX(-50px);
+    filter: blur(5px);
+    transition: all 0.4s ease 0s;
+}
+.product-grid .product-links li:nth-child(even){ transform: translateX(50px); }
+.product-grid:hover .product-links li{
+    filter: blur(0);
+    transform: translateX(0);
+}
+.product-grid .product-links li a{
+    color: #666;
+    background: rgba(255,255,255,0.9);
+    font-size: 16px;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    display: block;
+    transition: all 0.3s ease 0s;
+}
+.product-grid .product-links li a:hover{
+    color: #fff;
+    background: #76b713;
+}
+.product-grid .product-content{
+    background-color: #fff;
+    padding: 15px 10px 3px;
+}
+.product-grid .title{
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin: 0 0 10px;
+}
+.product-grid .title a{
+    color: #222;
+    transition: all 0.3s ease 0s;
+}
+.product-grid .title a:hover{ color: #76b713; }
+.product-grid .rating{
+    width: 80px;
+    padding: 0;
+    margin: 0 0 9px;
+    list-style: none;
+    vertical-align: top;
+    display: inline-block;
+}
+.product-grid .rating li{
+    color: #222;
+    font-size: 11px;
+    display: inline-block;
+}
+.product-grid .rating li.far{ color: #777; }
+.product-grid .price{
+    color: #76b713;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: right;
+    width: calc(100% - 85px);
+    display: inline-block;
+}
+.product-grid .price span{
+    color: #999;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: line-through;
+}
+@media screen and (max-width:990px){
+    .product-grid{ margin: 0 0 30px; }
+}
+</style>
