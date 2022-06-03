@@ -18,8 +18,8 @@ const upload = require("../confiq/multer");
 const moment = require('moment');
 paypal.configure({
   'mode': 'sandbox', //sandbox or live
-  'client_id': process.env.PAYPAL_ID,
-  'client_secret': process.env.PAYPAL_SECRET
+  'client_id':process.env.PAYPAL_ID,
+  'client_secret':process.env.PAYPAL_SECRET
 });
 
 const verifylogin = (req, res, next) => {
@@ -41,7 +41,7 @@ router.get("/", async function (req, res, next) {
   var today = new Date();
   let expiry = await moment(today).format('YYYY-MM-DD')
   userHelpers.updatedatef(expiry).then((response) => { });
-
+  
   cartCount = null
   if (req.session.user) {
     var cartCount = await userHelpers.getCarCount(req.session.user._id)
@@ -343,8 +343,8 @@ router.post('/address-selection', verifylogin, async (req, res) => {
           "payment_method": "paypal"
         },
         "redirect_urls": {
-          "return_url": "http://localhost:3000/order-success",
-          "cancel_url": "http://localhost:3000/cancel"
+          "return_url": "https://shoppie.sbs/order-success",
+          "cancel_url": "https://shoppie.sbs/cancel"
         },
         "transactions": [{
           "item_list": {
@@ -531,9 +531,9 @@ router.get('/user-profile-address/', verifylogin, async (req, res) => {
 
 // remove user address
 router.post('/remove-user-address', verifylogin, (req, res) => {
-
+ 
   userHelpers.removeUserAddress(req.body.address).then(() => {
-
+    
     res.json(response)
   })
 
@@ -579,7 +579,7 @@ router.post('/user-edit-password', verifylogin, (req, res) => {
   })
 })
 router.post('/user-edit-profile/:id', verifylogin, (req, res) => {
-
+ 
   userHelpers.editProfileDetails(req.params.id, req.body).then(() => {
 
     res.redirect('/user-profile');
@@ -661,7 +661,7 @@ router.get('/wishlist', async (req, res) => {
   if (wishilistItems <= 0) {
     res.render("user/empty-wishlist", { user: req.session.user })
   } else {
-    wishlistCount = null
+    wishlistCount = null 
     res.render('user/wishlist', { wishilistItems, user: req.session.user?._id });
   }
 
@@ -674,7 +674,7 @@ router.post('/remove-wishlist', (req, res) => {
   let wishlistId = req.body
   console.log(wishlistId, "rrrr");
   userHelpers.deleteWishlist(wishlistId).then((response) => {
-    res.json({ status: true })
+    res.json({ status: true }) 
   })
 
 })

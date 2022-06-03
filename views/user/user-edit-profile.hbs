@@ -1,11 +1,10 @@
-
 <div class="container">
     <div class="main-body">
         <form action="/user-edit-profile/{{profile._id}}" method="POST">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card">
-                        
+
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -16,8 +15,8 @@
                                     <h6 class="mb-0">Full Name</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control text-secondary" name="name" value="{{profile.name}}"
-                                        >
+                                    <input type="text" class="form-control text-secondary" name="name"
+                                        value="{{profile.name}}">
                                     <input type="text" name="userId" value="{{user._id}}" hidden>
                                 </div>
                             </div>
@@ -26,7 +25,8 @@
                                     <h6 class="mb-0">Email</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control text-secondary" name="email" value="{{profile.email}}">
+                                    <input type="text" class="form-control text-secondary" name="email"
+                                        value="{{profile.email}}">
                                 </div>
                             </div>
 
@@ -35,14 +35,16 @@
                                     <h6 class="mb-0">Mobile</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control text-secondary" name="mobile" value="{{profile.phoneNumber}}">
+                                    <input type="text" class="form-control text-secondary" name="mobile"
+                                        value="{{profile.phoneNumber}}">
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="submit" class="btn btn-warning px-4" value="Save Changes" href="/user-edit-profile">
+                                    <input type="submit" class="btn btn-warning px-4" value="Save Changes"
+                                        href="/user-edit-profile">
                                 </div>
                             </div>
         </form>
@@ -50,9 +52,9 @@
         <form action="/user-edit-password" method="post">
             <div class="card-body">
                 {{#if errorMsg}}
-                    <p>{{errorMsg}}</p>
+                <p>{{errorMsg}}</p>
 
-                 {{/if}}   
+                {{/if}}
                 <div class="row mb-3">
                     <div class="col-sm-3">
                         <h6 class="mb-0">Current Password</h6>
@@ -74,7 +76,7 @@
                 <div class="row">
                     <div class="col-sm-3"></div>
                     <div class="col-sm-9 text-secondary">
-                        <input type="submit" class="btn btn-warning px-4"  id="button1" value="Change Password">
+                        <input type="submit" class="btn btn-warning px-4" id="button1" value="Change Password">
                     </div>
                 </div>
             </div>
@@ -86,14 +88,6 @@
 
 </div>
 </div>
-
-
-
-
-
-
-
-
 </div>
 </div>
 
@@ -108,22 +102,19 @@
         flex-direction: column;
         min-width: 0;
         word-wrap: break-word;
-    
+
         background-clip: border-box;
         border: 0 solid transparent;
         border-radius: .25rem;
         margin-bottom: 1.5rem;
         box-shadow: 0 2px 6px 0 rgba(16, 16, 19, 0.65), 0 2px 6px 0 rgba(167, 167, 171, 0.54);
         background-color: #e2e7f0;
-background-image: linear-gradient(315deg, #e1ebfa 0%, #f5f7fa 74%);
+        background-image: linear-gradient(315deg, #e1ebfa 0%, #f5f7fa 74%);
     }
 
     .me-2 {
         margin-right: .5rem !important;
     }
-    #button1{
-        
 
-    }
-    
+    #button1 {}
 </style>

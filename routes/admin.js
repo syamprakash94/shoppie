@@ -1,10 +1,10 @@
 const { response } = require('express');
-var express = require('express');
+let express = require('express');
 const async = require('hbs/lib/async');
 
 const productHelpers = require('../helpers/product-helpers');
-var router = express.Router();
-var productHelper = require('../helpers/product-helpers')
+let router = express.Router();
+let productHelper = require('../helpers/product-helpers')
 const upload = require('../confiq/multer')
 
 /* GET users listing. */
@@ -26,9 +26,7 @@ const verifylogin = (req, res, next) => {
 
 router.post('/admin-login', (req, res) => {
   if (req.body.email == cridential.email && req.body.password == cridential.password) {
-
     req.session.admin = true
-
     res.redirect('/admin')
   } else {
     res.render('admin/admin-login', { loginadminErr: true, home: true })
@@ -58,8 +56,6 @@ router.get('/', verifylogin, async function (req, res, next) {
 
   let orders = await productHelpers.getAllorders()
 
-  let dailyIncome = await productHelpers.getdailyIncome()
-
   res.render('admin/admin-home', { home: true, total, totalSales, totalProfit, totalUsers, orders })
 
 });
@@ -75,15 +71,9 @@ router.get('/add-product', verifylogin, (req, res) => {
   res.render('admin/add-product', { admin: true })
 })
 router.post('/add-product', upload.array('image', 12), (req, res) => {
-
   productHelper.addproduct(req.body, req.files, (id) => {
-
-
     res.render("admin/add-product", { admin: true })
   })
-
-
-
 })
 
 // edit product
@@ -98,9 +88,7 @@ router.post('/edit-product/:id', (req, res) => {
     if (req.files.image) {
       let image = req.files.image
       image.mv('./public/product-images/' + id + '.jpg', (err, done) => {
-
       })
-
     }
   })
 })
@@ -116,7 +104,6 @@ router.get('/delete-product/:id', verifylogin, (req, res) => {
 
 // category manegement
 router.get('/view-category', verifylogin, (req, res) => {
-
   productHelper.getAllcategory().then((category) => {
     res.render('admin/view-category', { category, admin: true })
   })
@@ -125,7 +112,6 @@ router.get('/view-category', verifylogin, (req, res) => {
 })
 router.get('/add-category', verifylogin, (req, res) => {
   res.render('admin/add-category', { admin: true })
-
 })
 router.post('/add-category', (req, res) => {
   productHelper.addcategory(req.body).then((id) => {
@@ -138,9 +124,7 @@ router.post('/add-category', (req, res) => {
       }
     })
     res.redirect('/admin/view-category')
-
   })
-
 })
 router.get('/delete-category/:id', verifylogin, (req, res) => {
   let cateId = req.params.id
@@ -164,9 +148,7 @@ router.post('/edit-category/:id', (req, res) => {
       })
     }
     res.redirect('/admin/view-category')
-
   })
-
 })
 
 // user manegement
@@ -174,7 +156,6 @@ router.get('/all-users', (req, res) => {
   productHelper.getAllUsers().then((users) => {
     res.render('admin/all-users', { users, admin: true })
   })
-
 })
 
 router.get('/block-user/:id', (req, res) => {
@@ -208,13 +189,11 @@ router.get('/delete-users/:id', (req, res) => {
 // order manegement
 router.get('/all-order', verifylogin, (req, res) => {
   productHelpers.getAllorders().then((orders) => {
-
     res.render('admin/all-order', { admin: true, orders })
   })
 })
 
 router.get('/product-details/:id', verifylogin, async (req, res) => {
-
   productHelpers.getOrderProducts(req.params.id).then((order) => {
     res.render('admin/product-details', { admin: true, order })
   })
@@ -232,22 +211,18 @@ router.get('/add-banner', verifylogin, (req, res) => {
   productHelpers.getBanner().then((banner) => {
     res.render('admin/add-banner', { banner, admin: true })
   })
-
 })
 
 router.post('/add-banner', verifylogin, upload.array('image', 12), (req, res) => {
-
   productHelper.addBanner(req.body, req.files, (id) => {
     res.redirect("/admin/add-banner")
   })
-
 })
 router.get('/delete-banner/:id', (req, res) => {
   let bannerId = req.params.id
   productHelper.deleteBanner(bannerId).then((response) => {
     res.json({ status: true })
   })
-
 })
 
 router.get('/getChartDetails', async (req, res) => {
@@ -256,8 +231,6 @@ router.get('/getChartDetails', async (req, res) => {
   let month = await productHelpers.countsalemonth()
   res.json({ dailyIncome, yearlyIncome, month })
 })
-
-
 
 router.get("/report", (req, res) => {
   productHelpers.monthlyReport().then((data) => {
@@ -275,7 +248,6 @@ router.post("/report", (req, res) => {
 
 // category offer
 router.get("/category-offer", async (req, res) => {
-
   let category = await productHelpers.getAllcategory()
   let categoryOffer = await productHelpers.getAllCategoryOffer()
   res.render("admin/category-offer", { categoryOffer, category, admin: true })
@@ -285,7 +257,6 @@ router.post("/category-offer", async (req, res) => {
   productHelpers.addCategoryOffer(req.body).then((response) => {
     res.redirect("/admin/category-offer")
   })
-
 })
 router.post('/delete-category-offer', (req, res) => {
   offerId = req.body
@@ -296,7 +267,6 @@ router.post('/delete-category-offer', (req, res) => {
 // chart report
 router.get('/chart', async function (req, res, next) {
   res.render('admin/chart', { admin: true })
-
 });
 
 // coupon
@@ -313,7 +283,6 @@ router.post('/add-coupon', (req, res) => {
   })
 
 })
-
 router.get('/delete-coupon/:id', (req, res) => {
   let couponId = req.params.id
   productHelper.deleteCoupon(couponId).then((response) => {

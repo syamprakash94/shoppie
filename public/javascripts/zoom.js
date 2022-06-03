@@ -71,9 +71,9 @@
 
 
             // коэффициенты скорости анимации
-            scrollspeedanimate: 5 /*4*/ , // прокрутки big картинки
+            scrollspeedanimate: 5 /*4*/, // прокрутки big картинки
             zoomspeedanimate: 7, // зуммирования (плавность)
-            loopspeedanimate: 2.5 /*2.45342*/ , // перемещения области лупы и big контейнера в режиме лупы				
+            loopspeedanimate: 2.5 /*2.45342*/, // перемещения области лупы и big контейнера в режиме лупы				
             magnifierspeedanimate: 350, // показа big контейнера
 
 
@@ -208,7 +208,7 @@
                 height = specs.setting.magnifiersize[1],
                 magcoords = {},
                 coords = specs.$img.offsetsl(),
-                func = function () {},
+                func = function () { },
                 left1 = 0,
                 top1 = 0;
 
@@ -267,11 +267,11 @@
             switch (specs.setting.magnifiereffectanimate) {
                 case 'slideIn':
                     specs.$magnifier.css({
-                            left: left1,
-                            top: top1 - height / 3,
-                            width: width,
-                            height: height
-                        })
+                        left: left1,
+                        top: top1 - height / 3,
+                        width: width,
+                        height: height
+                    })
                         .stop(true, true).show()
                         .animate({
                             top: top1
@@ -279,11 +279,11 @@
                     break;
                 case 'showIn':
                     specs.$magnifier.css({
-                            left: coords.left + Math.round(specs.img.w / 2),
-                            top: coords.top + Math.round(specs.img.h / 2),
-                            width: Math.round(specs.magnifier.w / 5),
-                            height: Math.round(specs.magnifier.h / 5)
-                        })
+                        left: coords.left + Math.round(specs.img.w / 2),
+                        top: coords.top + Math.round(specs.img.h / 2),
+                        width: Math.round(specs.magnifier.w / 5),
+                        height: Math.round(specs.magnifier.h / 5)
+                    })
                         .stop(true, true).show().css({
                             opacity: "0.1"
                         })
@@ -298,18 +298,18 @@
                     break;
                 default:
                     specs.$magnifier.css({
-                            left: left1,
-                            top: top1,
-                            width: width,
-                            height: height
-                        })
+                        left: left1,
+                        top: top1,
+                        width: width,
+                        height: height
+                    })
                         .stop(true, true)
                         .fadeIn(specs.setting.magnifierspeedanimate, func);
             }
             if (specs.setting.showstatus && (specs.title999 || specs.help))
                 specs.$statusdiv.html(specs.title999 + '<div style="font-size:80%">' + specs.help + '</div>')
-                .stop(true, true)
-                .fadeIn().delay(specs.setting.showstatustime).fadeOut("slow");
+                    .stop(true, true)
+                    .fadeIn().delay(specs.setting.showstatustime).fadeOut("slow");
             else specs.$statusdiv.hide();
         },
 
@@ -324,12 +324,12 @@
                 case 'showIn':
                     specs.$magnifier.stop(true, true)
                         .animate({
-                                left: coords.left + Math.round(specs.img.w / 2),
-                                top: coords.top + Math.round(specs.img.h / 2),
-                                opacity: "0.1",
-                                width: Math.round(specs.magnifier.w / 5),
-                                height: Math.round(specs.magnifier.h / 5)
-                            },
+                            left: coords.left + Math.round(specs.img.w / 2),
+                            top: coords.top + Math.round(specs.img.h / 2),
+                            opacity: "0.1",
+                            width: Math.round(specs.magnifier.w / 5),
+                            height: Math.round(specs.magnifier.h / 5)
+                        },
                             specs.setting.magnifierspeedanimate,
                             function () {
                                 specs.$magnifier.hide();
@@ -612,8 +612,8 @@
             $cursorshade = $("<div />");
             if (setting.cursorshade) {
                 $cursorshade.attr({
-                        "class": setting.classcursorshade
-                    })
+                    "class": setting.classcursorshade
+                })
                     .css({
                         zIndex: basezindex,
                         display: "none",
@@ -667,8 +667,8 @@
             $textdn = $("<div />");
             if (textdn) {
                 $textdn.attr({
-                        "class": setting.classtextdn
-                    })
+                    "class": setting.classtextdn
+                })
                     .css({
                         position: "absolute",
                         zIndex: basezindex,
@@ -760,7 +760,7 @@
 
                 if (setting.largeimage !== $tracker.data('largeimage')) {
 
-                    $(new Image()).on('load', function () {}).attr("src", setting.largeimage);
+                    $(new Image()).on('load', function () { }).attr("src", setting.largeimage);
 
                     $($tracker).unbind();
                     $($statusdiv).remove();
@@ -783,7 +783,7 @@
                 setting.largeimage = $img.attr("data-large") || $img.attr("src");
                 if (setting.largeimage !== $tracker.data("largeimage")) {
 
-                    $(new Image()).on('load', function () {}).attr("src", setting.largeimage);
+                    $(new Image()).on('load', function () { }).attr("src", setting.largeimage);
 
                     $($tracker).unbind();
                     $($statusdiv).remove();

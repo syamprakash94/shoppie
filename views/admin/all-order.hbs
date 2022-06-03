@@ -7,7 +7,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center">
-                                    
+
                                 </th>
                                 <th>No:</th>
                                 <th>User Name</th>
@@ -24,19 +24,18 @@
                         <tbody class="table-body">
                             <tr class="cell-1">
                                 <td class="text-center">
-                                  
+
                                 </td>
                                 <td>{{ inc @index}}</td>
 
                                 <td>{{this.deliveryDetails.name}}</td>
                                 <td>{{this.deliveryDetails.address}} <br>{{this.deliveryDetails.pincode}}
-                                    <br>{{this.deliveryDetails.mobile}}</td>
+                                    <br>{{this.deliveryDetails.mobile}}
+                                </td>
                                 <td>{{this.date}}</td>
                                 <td>{{this.totalAmount}}</td>
-                                {{!-- <a href="/admin/cancelOrder/{{this._id}}" class="btn btn-success"></a> --}}
                                 <td> <a href="/admin/product-details/{{this._id}}" class="btn btn-success">Details</a>
                                 </td>
-                                {{!-- <td><i class="fa fa-ellipsis-h text-black-50"></i></td> --}}
                                 <td>{{this.paymentMethode}}</td>
                                 <td> <select onchange="deliveryStatus(value,'{{this._id}}')" class="custom-select"
                                         style="width: 7rem;">

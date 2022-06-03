@@ -1,40 +1,39 @@
 <section class="section mt-5" style="background-color: aliceblue; width: 95%; margin-left: 32px;">
 
-<div class="container mt-5">
-<table class="table ">
-   
-  <thead class="">
-     <tr>
-      <th scope="col">Name</th>
-       <th scope="col">Email</th>
-      <th scope="col">PhoneNumber</th>
-      {{!-- <th scope="col">password</th> --}}
-        <th scope="col">Options</th>
-        <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-       {{#each users}}
-    <tr class="table-active">
-      <td class="">{{this.name}}</td>
-      <td class="">{{this.email}}</td>
-       <td class="">{{this.phoneNumber}}</td>
-       {{!-- <td class="">{{this.password}}</td> --}}
-      
-       <td class="">
-          {{#if this.userBlock}}
-      <a href="/admin/unblock-user/{{this._id}}" class="btn  ">Unblock</a>
-    {{else}}
-      <a href="/admin/block-user/{{this._id}}" class="btn btn-light">block</a>
-      </td>
-      {{/if}}
-      
-          <td class=""><a href="/admin/delete-users/{{this._id}}" class="btn btn-light"   onclick="return confirm('Are you want to delete?')" >Delete</a></td>
+  <div class="container mt-5">
+    <table class="table ">
 
-    </tr>
-    {{/each}}
-   
-  </tbody>
-</table>
-</div>
+      <thead class="">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">PhoneNumber</th>
+          <th scope="col">Options</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each users}}
+        <tr class="table-active">
+          <td class="">{{this.name}}</td>
+          <td class="">{{this.email}}</td>
+          <td class="">{{this.phoneNumber}}</td>
+
+          <td class="">
+            {{#if this.userBlock}}
+            <a href="/admin/unblock-user/{{this._id}}" class="btn  ">Unblock</a>
+            {{else}}
+            <a href="/admin/block-user/{{this._id}}" class="btn btn-light">block</a>
+          </td>
+          {{/if}}
+
+          <td class=""><a href="/admin/delete-users/{{this._id}}" class="btn btn-light"
+              onclick="return confirm('Are you want to delete?')">Delete</a></td>
+
+        </tr>
+        {{/each}}
+
+      </tbody>
+    </table>
+  </div>
 </section>

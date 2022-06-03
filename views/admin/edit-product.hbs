@@ -1,161 +1,168 @@
-<section class="section mt-5" style="background-color: aliceblue; width: 55%; margin-left: 18rem;    border-color: rgb(204, 199, 199);">
-    <div class="container">
+<section class="section mt-5"
+  style="background-color: aliceblue; width: 55%; margin-left: 18rem;    border-color: rgb(204, 199, 199);">
+  <div class="container">
     <div class="row">
       <h2>Edit Product</h2>
-        <form action="/admin/edit-product/{{product._id}}" method="post" enctype="">
-  <div class="col-md-6">
-    <label for="" class="form-label">brand :</label>
-    <input type="text" name="brand" value="{{product.brand}}" class="form-control" id="brand" onkeyup="validateName()" >
-     <p id="Name-error" class="error text-danger"></p>
-  <div class="mt-3">
-    <label for="" class="form-label">category:</label>
-    <input type="text" name="category" value="{{product.category}}" class="form-control" id="exampleInputPassword1">
-  </div>
-
- 
-     <div class="mt-3">
-    <label for="" class="form-label">Description:</label>
-    <input type="text" name="description" value="{{product.description}}" class="form-control" id="description" onkeyup=" validateDescription()">
-   <p id="Description-error" class="error text-danger"></p>
-  </div>
+      <form action="/admin/edit-product/{{product._id}}" method="post" enctype="">
+        <div class="col-md-6">
+          <label for="" class="form-label">brand :</label>
+          <input type="text" name="brand" value="{{product.brand}}" class="form-control" id="brand"
+            onkeyup="validateName()">
+          <p id="Name-error" class="error text-danger"></p>
+          <div class="mt-3">
+            <label for="" class="form-label">category:</label>
+            <input type="text" name="category" value="{{product.category}}" class="form-control"
+              id="exampleInputPassword1">
+          </div>
 
 
-  <div class="mt-3">
-    <label for="" class="form-label">orginal price:</label>
-    <input type="number" name="orginalPrice" value="{{product.orginalPrice}}" class="form-control" id="exampleInputPassword1">
-  </div>
- 
-  <div class="mt-3">
-    <label for="" class="form-label">offer price:</label>
-    <input type="number" name="offerPrice" value="{{product.offerPrice}}" class="form-control" id="exampleInputPassword1">
-  </div>
+          <div class="mt-3">
+            <label for="" class="form-label">Description:</label>
+            <input type="text" name="description" value="{{product.description}}" class="form-control" id="description"
+              onkeyup=" validateDescription()">
+            <p id="Description-error" class="error text-danger"></p>
+          </div>
 
 
-  <div class="mt-3">
-    <label for="" class="form-label">offer percentage:</label>
-    <input type="number" name="offerpercentage" value="{{product.offerpercentage}}" class="form-control" id="exampleInputPassword1">
-  </div>
-{{#each product.img}}
-  <div class="mt-3">
-    <label for="" class="form-label">image:</label>
-    <img src="/images/{{this}}" alt="" style="width: 100px; height:auto" id="imgView">
-    <input type="file" name="image"  value="{{this}}" class="form-control" id="exampleInputPassword1" onchange="viewImage(event)">
-  </div>
-  {{/each}}
-  
-  <button type="submit" class="btn btn-warning mt-3">Submit</button>
-</form>
+          <div class="mt-3">
+            <label for="" class="form-label">orginal price:</label>
+            <input type="number" name="orginalPrice" value="{{product.orginalPrice}}" class="form-control"
+              id="exampleInputPassword1">
+          </div>
+
+          <div class="mt-3">
+            <label for="" class="form-label">offer price:</label>
+            <input type="number" name="offerPrice" value="{{product.offerPrice}}" class="form-control"
+              id="exampleInputPassword1">
+          </div>
+
+
+          <div class="mt-3">
+            <label for="" class="form-label">offer percentage:</label>
+            <input type="number" name="offerpercentage" value="{{product.offerpercentage}}" class="form-control"
+              id="exampleInputPassword1">
+          </div>
+          {{#each product.img}}
+          <div class="mt-3">
+            <label for="" class="form-label">image:</label>
+            <img src="/images/{{this}}" alt="" style="width: 100px; height:auto" id="imgView">
+            <input type="file" name="image" value="{{this}}" class="form-control" id="exampleInputPassword1"
+              onchange="viewImage(event)">
+          </div>
+          {{/each}}
+
+          <button type="submit" class="btn btn-warning mt-3">Submit</button>
+      </form>
     </div>
-    </div>
+  </div>
 </section>
 <script>
-  function viewImage(event){
-    document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+  function viewImage(event) {
+    document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
   }
   )
 </script>
 
- <script>
-var brandError=document.getElementById('Name-error');
-var descriptionError=document.getElementById('Description-error');
-var emailError=document.getElementById('Email-error');
-var PasswordError=document.getElementById('Password-error');
-var phoneError=document.getElementById('Phone-error')
-var submitError=document.getElementById('Submit-error');
-var conformPassword=document.getElementById('rePassword-error')
+<script>
+  var brandError = document.getElementById('Name-error');
+  var descriptionError = document.getElementById('Description-error');
+  var emailError = document.getElementById('Email-error');
+  var PasswordError = document.getElementById('Password-error');
+  var phoneError = document.getElementById('Phone-error')
+  var submitError = document.getElementById('Submit-error');
+  var conformPassword = document.getElementById('rePassword-error')
 
 
 
-function validateName(){
+  function validateName() {
     var brand = document.getElementById('brand').value;
 
-    if(brand.length==0){
-        brandError.innerHTML= 'Brand is required';
-        return false;
+    if (brand.length == 0) {
+      brandError.innerHTML = 'Brand is required';
+      return false;
     }
-    if(!brand.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)){
-        brandError.innerHTML='Write full name';
-        return false;
+    if (!brand.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)) {
+      brandError.innerHTML = 'Write full name';
+      return false;
     }
     brandError.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
     return true;
-}
-function validateDescription(){
+  }
+  function validateDescription() {
     var description = document.getElementById('description').value;
 
-    if(description.length==0){
-        descriptionError.innerHTML= 'Description is required';
-        return false;
+    if (description.length == 0) {
+      descriptionError.innerHTML = 'Description is required';
+      return false;
     }
-    if(!description.match(/^[A-Za-z]*\s{1}[A-Za-z]*/)){
-        descriptionError.innerHTML='Write full name';
-        return false;
+    if (!description.match(/^[A-Za-z]*\s{1}[A-Za-z]*/)) {
+      descriptionError.innerHTML = 'Write full name';
+      return false;
     }
     descriptionError.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
     return true;
-}
+  }
 
-  function validateEmail(){
+  function validateEmail() {
     var email = document.getElementById('email').value;
 
-    if(email.length==0){
-        emailError.innerHTML='Email is required'
-        return false;
+    if (email.length == 0) {
+      emailError.innerHTML = 'Email is required'
+      return false;
     }
-    if(!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
-        emailError.innerHTML = 'Email invalid'
-        return false;
+    if (!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)) {
+      emailError.innerHTML = 'Email invalid'
+      return false;
     }
     emailError.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
     return true;
-}
-function validatePassword(){
-    var message = document.getElementById('password').value;
-    var required=5;
-    var left=required-message.length;
-
-    if(left>0){
-      PasswordError.innerHTML=left+'more character required';
-        return false;
-    }
-
-   PasswordError.innerHTML= '<i class="fa-solid fa-circle-check text-success"></i>';
-    return true;
-}
-function rePassword(){
-  var password=document.getElementById('password').value;
-  var password1=document.getElementById('conformPassword').value;
-  if(password!=password1){
-    conformPassword.innerHTML='password is not match';
-    return false;
   }
-    conformPassword.innerHTML='<i class="fa-solid fa-circle-check text-success"></i>';
+  function validatePassword() {
+    var message = document.getElementById('password').value;
+    var required = 5;
+    var left = required - message.length;
+
+    if (left > 0) {
+      PasswordError.innerHTML = left + 'more character required';
+      return false;
+    }
+
+    PasswordError.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
     return true;
-  
-}
-function validatePhoneNUmber(){
+  }
+  function rePassword() {
+    var password = document.getElementById('password').value;
+    var password1 = document.getElementById('conformPassword').value;
+    if (password != password1) {
+      conformPassword.innerHTML = 'password is not match';
+      return false;
+    }
+    conformPassword.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
+    return true;
+
+  }
+  function validatePhoneNUmber() {
     var message = document.getElementById('phoneNumber').value;
-    var required=10;
-    var left=required-message.length;
+    var required = 10;
+    var left = required - message.length;
 
-    if(left>0){
-      phoneError.innerHTML=left+'more character required';
-        return false;
+    if (left > 0) {
+      phoneError.innerHTML = left + 'more character required';
+      return false;
     }
 
-  phoneError.innerHTML= '<i class="fa-solid fa-circle-check text-success"></i>';
+    phoneError.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
     return true;
-}
+  }
 
 
-function validateForm(){
-    if(!validateName() || !validateDescription() || !validateEmail() || !validatePassword() || !validatePhoneNUmber() || !rePassword()){
+  function validateForm() {
+    if (!validateName() || !validateDescription() || !validateEmail() || !validatePassword() || !validatePhoneNUmber() || !rePassword()) {
 
-        // submitError.style.display='block';
-        submitError.innerHTML='Please fix error to submit';
-        setTimeout(function(){submitError.style.display='none';},5000);
-        return false;
+      submitError.innerHTML = 'Please fix error to submit';
+      setTimeout(function () { submitError.style.display = 'none'; }, 5000);
+      return false;
     }
-}
+  }
 
-        </script>
+</script>

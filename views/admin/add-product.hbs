@@ -2,171 +2,160 @@
 
 
 <section class="section mt-5" style="background-color: aliceblue; width: 55%; margin-left: 18rem;">
-    <h3 style="color: rgb(91, 90, 90);">Add Product</h3>
-    <div class="container">
+  <h3 style="color: rgb(91, 90, 90);">Add Product</h3>
+  <div class="container">
     <div class="row">
-        <form action="/admin/add-product" method="post" enctype="multipart/form-data">
-  <div class="col-md-6">
-    <label for="" class="form-label">Brand:</label>
-    <input type="text" name="brand" class="form-control" id="brand" onkeyup="validateName()" required>
-     <p id="Name-error" class="error text-danger"></p>
-  {{!-- <div class="mt-3">
-    <label for="" class="form-label">Category:</label>
-    <input type="text" name="category" class="form-control" id="exampleInputPassword1" required>
-  </div> --}}
+      <form action="/admin/add-product" method="post" enctype="multipart/form-data">
+        <div class="col-md-6">
+          <label for="" class="form-label">Brand:</label>
+          <input type="text" name="brand" class="form-control" id="brand" onkeyup="validateName()" required>
+          <p id="Name-error" class="error text-danger"></p>
 
-  <select class="form-select mt-3" name="category"  class="form-control" aria-label="Default select example">
-  <option selected>CATAGORY</option>
-  <option value="MEN">MEN</option>
-  <option value="KIDS">KIDS</option>
-  <option value="WOMEN">WOMEN</option>
-</select>
+          <select class="form-select mt-3" name="category" class="form-control" aria-label="Default select example">
+            <option selected>CATAGORY</option>
+            <option value="MEN">MEN</option>
+            <option value="KIDS">KIDS</option>
+            <option value="WOMEN">WOMEN</option>
+          </select>
 
- 
-     <div class="mt-3">
-    <label for="" class="form-label">Description:</label>
-    <input type="text" name="description" class="form-control" id="description" onkeyup=" validateDescription()" required>
-    <p id="Description-error" class="error text-danger"></p>
-  </div>
 
- <div class="mt-3">
-    <label for="" class="form-label">Orginal Price:</label>
-    <input type="number" name="orginalPrice" class="form-control" id="exampleInputPassword1" required>
-  </div>
+          <div class="mt-3">
+            <label for="" class="form-label">Description:</label>
+            <input type="text" name="description" class="form-control" id="description" onkeyup=" validateDescription()"
+              required>
+            <p id="Description-error" class="error text-danger"></p>
+          </div>
 
-  <div class="mt-3">
-    <label for="" class="form-label">Offer Price:</label>
-    <input type="number" name="offerPrice" class="form-control" id="exampleInputPassword1" required>
-  </div>
-  <div class="mt-3">
-    <label for="" class="form-label">Offer Percentage:</label>
-    <input type="number" name="offerpercentage" class="form-control" id="exampleInputPassword1" onkeyup="" required>
-  </div>
+          <div class="mt-3">
+            <label for="" class="form-label">Orginal Price:</label>
+            <input type="number" name="orginalPrice" class="form-control" id="exampleInputPassword1" required>
+          </div>
+
+          <div class="mt-3">
+            <label for="" class="form-label">Offer Price:</label>
+            <input type="number" name="offerPrice" class="form-control" id="exampleInputPassword1" required>
+          </div>
+          <div class="mt-3">
+            <label for="" class="form-label">Offer Percentage:</label>
+            <input type="number" name="offerpercentage" class="form-control" id="exampleInputPassword1" onkeyup=""
+              required>
+          </div>
 
 
 
-  <div class="mt-3">
-    <label for="" class="form-label">Image:</label>
-    <input type="file" name="image" class="form-control" id="exampleInputPassword1" required multiple >
-  </div>
+          <div class="mt-3">
+            <label for="" class="form-label">Image:</label>
+            <input type="file" name="image" class="form-control" id="exampleInputPassword1" required multiple>
+          </div>
 
-    {{!-- <div class="mt-3">
-    <label for="" class="form-label">Image 2:</label>
-    <input type="file" name="image2" class="form-control" id="exampleInputPassword1">
-  </div>
-    <div class="mt-3">
-    <label for="" class="form-label">Image 3:</label>
-    <input type="file" name="image3" class="form-control" id="exampleInputPassword1">
- </div> --}}
 
-  <button type="submit" class="btn btn-warning mt-3">Submit</button>
-</form>
+          <button type="submit" class="btn btn-warning mt-3">Submit</button>
+      </form>
     </div>
-    </div>
+  </div>
 </section>
 
 
- <script>
-var brandError=document.getElementById('Name-error');
-var descriptionError=document.getElementById('Description-error');
-var emailError=document.getElementById('Email-error');
-var PasswordError=document.getElementById('Password-error');
-var phoneError=document.getElementById('Phone-error')
-var submitError=document.getElementById('Submit-error');
-var conformPassword=document.getElementById('rePassword-error')
+<script>
+  var brandError = document.getElementById('Name-error');
+  var descriptionError = document.getElementById('Description-error');
+  var emailError = document.getElementById('Email-error');
+  var PasswordError = document.getElementById('Password-error');
+  var phoneError = document.getElementById('Phone-error')
+  var submitError = document.getElementById('Submit-error');
+  var conformPassword = document.getElementById('rePassword-error')
 
 
 
-function validateName(){
+  function validateName() {
     var brand = document.getElementById('brand').value;
 
-    if(brand.length==0){
-        brandError.innerHTML= 'Brand is required';
-        return false;
+    if (brand.length == 0) {
+      brandError.innerHTML = 'Brand is required';
+      return false;
     }
-    if(!brand.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)){
-        brandError.innerHTML='Write full name';
-        return false;
+    if (!brand.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)) {
+      brandError.innerHTML = 'Write full name';
+      return false;
     }
     brandError.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
     return true;
-}
-function validateDescription(){
+  }
+  function validateDescription() {
     var description = document.getElementById('description').value;
 
-    if(description.length==0){
-        descriptionError.innerHTML= 'Description is required';
-        return false;
+    if (description.length == 0) {
+      descriptionError.innerHTML = 'Description is required';
+      return false;
     }
-    if(!description.match(/^[A-Za-z]*\s{1}[A-Za-z]*/)){
-        descriptionError.innerHTML='Write full name';
-        return false;
+    if (!description.match(/^[A-Za-z]*\s{1}[A-Za-z]*/)) {
+      descriptionError.innerHTML = 'Write full name';
+      return false;
     }
     descriptionError.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
     return true;
-}
+  }
 
-  function validateEmail(){
+  function validateEmail() {
     var email = document.getElementById('email').value;
 
-    if(email.length==0){
-        emailError.innerHTML='Email is required'
-        return false;
+    if (email.length == 0) {
+      emailError.innerHTML = 'Email is required'
+      return false;
     }
-    if(!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
-        emailError.innerHTML = 'Email invalid'
-        return false;
+    if (!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)) {
+      emailError.innerHTML = 'Email invalid'
+      return false;
     }
     emailError.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
     return true;
-}
-function validatePassword(){
-    var message = document.getElementById('password').value;
-    var required=5;
-    var left=required-message.length;
-
-    if(left>0){
-      PasswordError.innerHTML=left+'more character required';
-        return false;
-    }
-
-   PasswordError.innerHTML= '<i class="fa-solid fa-circle-check text-success"></i>';
-    return true;
-}
-function rePassword(){
-  var password=document.getElementById('password').value;
-  var password1=document.getElementById('conformPassword').value;
-  if(password!=password1){
-    conformPassword.innerHTML='password is not match';
-    return false;
   }
-    conformPassword.innerHTML='<i class="fa-solid fa-circle-check text-success"></i>';
+  function validatePassword() {
+    var message = document.getElementById('password').value;
+    var required = 5;
+    var left = required - message.length;
+
+    if (left > 0) {
+      PasswordError.innerHTML = left + 'more character required';
+      return false;
+    }
+
+    PasswordError.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
     return true;
-  
-}
-function validatePhoneNUmber(){
+  }
+  function rePassword() {
+    var password = document.getElementById('password').value;
+    var password1 = document.getElementById('conformPassword').value;
+    if (password != password1) {
+      conformPassword.innerHTML = 'password is not match';
+      return false;
+    }
+    conformPassword.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
+    return true;
+
+  }
+  function validatePhoneNUmber() {
     var message = document.getElementById('phoneNumber').value;
-    var required=10;
-    var left=required-message.length;
+    var required = 10;
+    var left = required - message.length;
 
-    if(left>0){
-      phoneError.innerHTML=left+'more character required';
-        return false;
+    if (left > 0) {
+      phoneError.innerHTML = left + 'more character required';
+      return false;
     }
 
-  phoneError.innerHTML= '<i class="fa-solid fa-circle-check text-success"></i>';
+    phoneError.innerHTML = '<i class="fa-solid fa-circle-check text-success"></i>';
     return true;
-}
+  }
 
 
-function validateForm(){
-    if(!validateName() || !validateDescription() || !validateEmail() || !validatePassword() || !validatePhoneNUmber() || !rePassword()){
+  function validateForm() {
+    if (!validateName() || !validateDescription() || !validateEmail() || !validatePassword() || !validatePhoneNUmber() || !rePassword()) {
 
-        // submitError.style.display='block';
-        submitError.innerHTML='Please fix error to submit';
-        setTimeout(function(){submitError.style.display='none';},5000);
-        return false;
+      submitError.innerHTML = 'Please fix error to submit';
+      setTimeout(function () { submitError.style.display = 'none'; }, 5000);
+      return false;
     }
-}
+  }
 
-        </script>
+</script>

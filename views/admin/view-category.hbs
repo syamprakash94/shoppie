@@ -1,44 +1,36 @@
 <section class="section mt-5" style="background-color: aliceblue; width: 95%; margin-left: 32px;">
-    <div class="container mt-5">
-       
-        <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">no</th>
-       {{!-- <th scope="col">brand</th> --}}
-      <th scope="col">category</th>
-      
-        <th scope="col">image</th>
-        <th scope="col">Options</th>
-    </tr>
-  </thead>
-  <tbody>
-     {{#each category}}
-    <tr>
-      <th scope="row">{{inc @index}}</th>
-      {{!-- <td>
-          {{this.brand}}
-      </td> --}}
-    
+  <div class="container mt-5">
 
-      <td>{{this.category}}
-      </td>
-       
-       <td><img style="width: 50px; hieght: 50px;" src="/category-image/{{this._id}}.jpg" alt="">
-         
-      </td>
-      <td>
-           <a href="/admin/edit-category/{{this._id}}" class="btn btn-light">Edit</a>
-        <a href="/admin/delete-category/{{this._id}}" class="btn btn-light text-danger" onclick="return confirm('Are You Want to Delete {{this.name}}?')">delete</a>
-      </td>
-    </tr>
-    
-  {{/each}}
-  </tbody>
-</table>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">no</th>
+          <th scope="col">category</th>
+          <th scope="col">image</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each category}}
+        <tr>
+          <th scope="row">{{inc @index}}</th>
+          <td>{{this.category}}
+          </td>
+          <td><img style="width: 50px; hieght: 50px;" src="/category-image/{{this._id}}.jpg" alt="">
+          </td>
+          <td>
+            <a href="/admin/edit-category/{{this._id}}" class="btn btn-light">Edit</a>
+            <a href="/admin/delete-category/{{this._id}}" class="btn btn-light text-danger"
+              onclick="return confirm('Are You Want to Delete {{this.name}}?')">delete</a>
+          </td>
+        </tr>
+
+        {{/each}}
+      </tbody>
+    </table>
 
     <a href="/admin/add-category" class="btn btn-warning float-start">Add Category </a>
-  <a href="/admin/category-offer" class="btn btn-warning float-end">Add Category Offer</a>
-    </div>
-    
+    <a href="/admin/category-offer" class="btn btn-warning float-end">Add Category Offer</a>
+  </div>
+
 </section>

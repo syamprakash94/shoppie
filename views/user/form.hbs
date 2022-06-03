@@ -1,4 +1,4 @@
-<form id="checkout-form" >
+<form id="checkout-form">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -15,16 +15,16 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <script>
-  $("#checkout-form").submit((e)=>{
+  $("#checkout-form").submit((e) => {
     e.preventDefault()
     $.ajax({
-      url:'/place-order',
-      method:'post',
-      data:$('#checkout-form').serialize(),
-      success:(response)=>{
+      url: '/place-order',
+      method: 'post',
+      data: $('#checkout-form').serialize(),
+      success: (response) => {
         alert(response)
-        if(response.status){
-          location.href='/order-success'
+        if (response.status) {
+          location.href = '/order-success'
         }
       }
     })

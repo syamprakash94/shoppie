@@ -1,9 +1,9 @@
-var db = require('../confiq/connection')
-var collection = require('../confiq/collection');
-var bcrypt = require('bcrypt');
-var objectId = require('mongodb').ObjectId
+let db = require('../confiq/connection')
+let collection = require('../confiq/collection');
+let bcrypt = require('bcrypt');
+let objectId = require('mongodb').ObjectId
 
-var promise = require('promise');
+let promise = require('promise');
 const async = require('hbs/lib/async');
 const moment = require('moment');
 const { resolve, reject } = require('promise');
@@ -194,15 +194,15 @@ module.exports = {
                 }
 
             ]).toArray()
-          
+
             resolve(orderItems)
         })
 
     },
     statusUpdate: (status, orderId) => {
         return new promise((resolve, reject) => {
-          
-             if (status == "Delivered") {
+
+            if (status == "Delivered") {
                 db.get().collection(collection.ORDER_COLLECTION).updateOne({ _id: objectId(orderId) }, {
                     $set: {
                         status: status,
@@ -238,21 +238,21 @@ module.exports = {
 
         })
     },
-    getBanner:()=>{
-        return new promise(async(resolve,reject)=>{
-            let banner= await db.get().collection(collection.BANNER_COLLECTION).find().toArray()
+    getBanner: () => {
+        return new promise(async (resolve, reject) => {
+            let banner = await db.get().collection(collection.BANNER_COLLECTION).find().toArray()
             resolve(banner)
         })
     },
-    
+
     addBanner: (banner, files, callback) => {
-        let Img = files.map((info,index)=>{
+        let Img = files.map((info, index) => {
             return files[index].filename
         })
         banner.img = Img
-        
-db.get().collection('banner').insertOne(banner).then((data) => {
-            
+
+        db.get().collection('banner').insertOne(banner).then((data) => {
+
             callback(data.insertedId)
         })
     },
@@ -265,7 +265,7 @@ db.get().collection('banner').insertOne(banner).then((data) => {
             })
         })
     },
-// grphs
+    // grphs
     getdailyIncome: () => {
         return new promise(async (resolve, reject) => {
             let dailySale = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
@@ -644,9 +644,9 @@ db.get().collection('banner').insertOne(banner).then((data) => {
                 endDateIso: endDateIso,
                 users: []
             }
-            await db.get().collection(collection.COUPON_COLLECTION).insertOne(dataobj).then((data)=>{
+            await db.get().collection(collection.COUPON_COLLECTION).insertOne(dataobj).then((data) => {
                 resolve()
-            }).catch((err)=>{
+            }).catch((err) => {
                 res(err)
             })
         })
@@ -661,6 +661,6 @@ db.get().collection('banner').insertOne(banner).then((data) => {
         })
     },
 
-    
+
 
 }

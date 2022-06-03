@@ -33,16 +33,16 @@
         }
 
         .card {
-            background-color:aliceblue;
+            background-color: aliceblue;
         }
     </style>
 </head>
 
 <body>
-    <div class="container mt-5 mb-3"  style="height: 90vh;">
+    <div class="container mt-5 mb-3" style="height: 90vh;">
         <div class="row d-flex justify-content-center">
             <div class="col-md-8">
-                <div class="card" id="invoice" >
+                <div class="card" id="invoice">
                     <div class="d-flex flex-row p-2">
                         <div class="d-flex flex-column"> <span class="font-weight-bold"> INVOICE</span>
                             <small>{{products.DateIso}}</small>
@@ -69,7 +69,7 @@
                     <hr>
                     <div class="products p-2">
                         <table class="table table-borderless">
-                          
+
                             <tbody>
                                 <tr class="add">
                                     <td>Product Name</td>
@@ -84,31 +84,31 @@
                                     <td>Success</td>
                                     <td class="text-center">₹{{this.product.offerPrice}}</td>
                                 </tr>
-{{/each}}
+                                {{/each}}
                             </tbody>
-                            
+
                         </table>
-                        
-<hr>
-<div class="table-responsive ">
-                        <table class="table table-borderless">
-                            <tbody>
-                                  <tr class="add">
-                                    <td>Product Name</td>
-                                  
-                                    <td class="text-center" >Total</td>
-                                     <td class="text-center me-5">₹{{products.totalAmount}}</td>
-                                </tr>
-                               
-                                
-                            </tbody>
-                        </table>
+
+                        <hr>
+                        <div class="table-responsive ">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr class="add">
+                                        <td>Product Name</td>
+
+                                        <td class="text-center">Total</td>
+                                        <td class="text-center me-5">₹{{products.totalAmount}}</td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
                     </div>
 
 
-                    </div>
-
-                
                     <div>
 
                     </div>
@@ -116,7 +116,8 @@
             </div>
         </div>
         <div style="align-items: center; margin-left:45rem">
-            <button class="btn" id="downloadPdf"="">Download Invoice?<i class="fa-solid fa-download text-Info"></i></button>
+            <button class="btn" id="downloadPdf"="">Download Invoice?<i
+                    class="fa-solid fa-download text-Info"></i></button>
         </div>
     </div>
 

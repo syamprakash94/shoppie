@@ -1,28 +1,33 @@
-<link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
+<link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css"
+    integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
 
 <div class="container">
     <div class="row mt-5">
-        
-        <div class="col-md-9"  >
-            <div class="osahan-account-page-right shadow-sm  p-4 h-100"  >
+
+        <div class="col-md-9">
+            <div class="osahan-account-page-right shadow-sm  p-4 h-100">
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade  active show" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
+                    <div class="tab-pane fade  active show" id="addresses" role="tabpanel"
+                        aria-labelledby="addresses-tab">
                         <h4 class="font-weight-bold mt-0 mb-4">Manage Addresses</h4>
                         <div class="row">
                             {{#each address}}
-                            <div class="col-md-6" >
-                                <div class="bg-white card addresses-item mb-4 border border-primary shadow" >
-                                    <div class="gold-members p-4"> 
+                            <div class="col-md-6">
+                                <div class="bg-white card addresses-item mb-4 border border-primary shadow">
+                                    <div class="gold-members p-4">
                                         <div class="media">
                                             <div class="mr-3"><i class="icofont-ui-home icofont-3x"></i></div>
                                             <div class="media-body">
                                                 <h6 class="mb-1 text-secondary">Home</h6>
-                                                <p class="text-black">{{this.name}},<br>{{this.address}},<br>{{this.state}},{{this.pincode}},<br>{{this.city}}
+                                                <p class="text-black">
+                                                    {{this.name}},<br>{{this.address}},<br>{{this.state}},{{this.pincode}},<br>{{this.city}}
                                                 </p>
                                                 <p class="mb-0 text-black font-weight-bold">
-                                                 <a  onclick="removeUserAddress('{{this._id}}','{{this.address._id}}')" class="text-danger" >DELETE</a>
-                                                {{!-- <a href="/remove-user-address/{{this._id}}"  >DELETE</a> --}}
-                                               <a  data-toggle="modal" data-target="#exampleModalLong" class="pl-3 text-primary">EDIT</a>
+                                                    <a onclick="removeUserAddress('{{this._id}}','{{this.address._id}}')"
+                                                        class="text-danger">DELETE</a>
+
+                                                    <a data-toggle="modal" data-target="#exampleModalLong"
+                                                        class="pl-3 text-primary">EDIT</a>
 
                                                 </p>
                                             </div>
@@ -32,8 +37,8 @@
                             </div>
                             {{/each}}
                         </div>
-                        
-                        
+
+
                     </div>
                 </div>
             </div>
@@ -43,167 +48,168 @@
 
 <script>
     body{
-    margin-top:20px;
-    background:#eee;
-}
+        margin - top: 20px;
+        background: #eee;
+    }
 /* My Account */
-.payments-item img.mr-3 {
-    width: 47px;
-}
-.order-list .btn {
-    border-radius: 2px;
-    min-width: 121px;
-    font-size: 13px;
-    padding: 7px 0 7px 0;
-}
-#gold{
-          background-color: #e2e7f0;
-background-image: linear-gradient(315deg, #e1ebfa 0%, #f5f7fa 74%);
-}
-.osahan-account-page-left .nav-link {
-    padding: 18px 20px;
-    border: none;
-    font-weight: 600;
-    color: #535665;
-}
-.osahan-account-page-left .nav-link i {
-    width: 28px;
-    height: 28px;
-    background: #535665;
-    display: inline-block;
-    text-align: center;
-    line-height: 29px;
-    font-size: 15px;
-    border-radius: 50px;
-    margin: 0 7px 0 0px;
-    color: #fff;
-}
-.osahan-account-page-left .nav-link.active {
-    background: #f3f7f8;
-    color: #282c3f !important;
-}
-.osahan-account-page-left .nav-link.active i {
-    background: #282c3f !important;
-}
-.osahan-user-media img {
-    width: 90px;
-}
-.card offer-card h5.card-title {
-    border: 2px dotted #000;
-}
-.card.offer-card h5 {
-    border: 1px dotted #daceb7;
-    display: inline-table;
-    color: #17a2b8;
-    margin: 0 0 19px 0;
-    font-size: 15px;
-    padding: 6px 10px 6px 6px;
-    border-radius: 2px;
-    background: #fffae6;
-    position: relative;
-}
-.card.offer-card h5 img {
-    height: 22px;
-    object-fit: cover;
-    width: 22px;
-    margin: 0 8px 0 0;
-    border-radius: 2px;
-}
-.card.offer-card h5:after {
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-bottom: 4px solid #daceb7;
-    content: "";
-    left: 30px;
-    position: absolute;
-    bottom: 0;
-}
-.card.offer-card h5:before {
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px solid #daceb7;
-    content: "";
-    left: 30px;
-    position: absolute;
-    top: 0;
-}
-.payments-item .media {
-    align-items: center;
-}
-.payments-item .media img {
-    margin: 0 40px 0 11px !important;
-}
-.reviews-members .media .mr-3 {
-    width: 56px;
-    height: 56px;
-    object-fit: cover;
-}
-.order-list img.mr-4 {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
-    border-radius: 2px;
-}
-.osahan-cart-item p.text-gray.float-right {
-    margin: 3px 0 0 0;
-    font-size: 12px;
-}
-.osahan-cart-item .food-item {
-    vertical-align: bottom;
-}
+.payments - item img.mr - 3 {
+        width: 47px;
+    }
+.order - list.btn {
+        border - radius: 2px;
+        min - width: 121px;
+        font - size: 13px;
+        padding: 7px 0 7px 0;
+    }
+    #gold{
+        background - color: #e2e7f0;
+        background - image: linear - gradient(315deg, #e1ebfa 0 %, #f5f7fa 74 %);
+    }
+.osahan - account - page - left.nav - link {
+        padding: 18px 20px;
+        border: none;
+        font - weight: 600;
+        color: #535665;
+    }
+.osahan - account - page - left.nav - link i {
+        width: 28px;
+        height: 28px;
+        background: #535665;
+        display: inline - block;
+        text - align: center;
+        line - height: 29px;
+        font - size: 15px;
+        border - radius: 50px;
+        margin: 0 7px 0 0px;
+        color: #fff;
+    }
+.osahan - account - page - left.nav - link.active {
+        background: #f3f7f8;
+        color: #282c3f!important;
+    }
+.osahan - account - page - left.nav - link.active i {
+        background: #282c3f!important;
+    }
+.osahan - user - media img {
+        width: 90px;
+    }
+.card offer - card h5.card - title {
+        border: 2px dotted #000;
+    }
+.card.offer - card h5 {
+        border: 1px dotted #daceb7;
+        display: inline - table;
+        color: #17a2b8;
+        margin: 0 0 19px 0;
+        font - size: 15px;
+        padding: 6px 10px 6px 6px;
+        border - radius: 2px;
+        background: #fffae6;
+        position: relative;
+    }
+.card.offer - card h5 img {
+        height: 22px;
+        object - fit: cover;
+        width: 22px;
+        margin: 0 8px 0 0;
+        border - radius: 2px;
+    }
+.card.offer - card h5:after {
+        border - left: 4px solid transparent;
+        border - right: 4px solid transparent;
+        border - bottom: 4px solid #daceb7;
+        content: "";
+        left: 30px;
+        position: absolute;
+        bottom: 0;
+    }
+.card.offer - card h5:before {
+        border - left: 4px solid transparent;
+        border - right: 4px solid transparent;
+        border - top: 4px solid #daceb7;
+        content: "";
+        left: 30px;
+        position: absolute;
+        top: 0;
+    }
+.payments - item.media {
+        align - items: center;
+    }
+.payments - item.media img {
+        margin: 0 40px 0 11px!important;
+    }
+.reviews - members.media.mr - 3 {
+        width: 56px;
+        height: 56px;
+        object - fit: cover;
+    }
+.order - list img.mr - 4 {
+        width: 70px;
+        height: 70px;
+        object - fit: cover;
+        box - shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+        border - radius: 2px;
+    }
+.osahan - cart - item p.text - gray.float - right {
+        margin: 3px 0 0 0;
+        font - size: 12px;
+    }
+.osahan - cart - item.food - item {
+        vertical - align: bottom;
+    }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    color: #000000;
-}
+        color: #000000;
+    }
 
-.shadow-sm {
-    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
-}
+.shadow - sm {
+        box - shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+    }
 
-.rounded-pill {
-    border-radius: 50rem!important;
-}
-a:hover{
-    text-decoration:none;
-}
+.rounded - pill {
+        border - radius: 50rem!important;
+    }
+    a:hover{
+        text - decoration: none;
+    }
 </script>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
-function removeUserAddress(addressId,userId){
-  
-  
-   swal({
-      title: "Are you sure?",
-      text: "Do you want to delete the offer?",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    })
-      .then((willDelete) => {
-        if (willDelete) {
-          $.ajax({
-            url: "/remove-user-address",
-            method: "POST",
-            data: { user:userId,
-              address:addressId,
-                     
-                    },
-            success: (result) => {
-              if (result) {
-                swal("Offer deleted Successfully", {
-                  icon: "success",
-                }).then((ok)=>{
-                    location.href = '/user-profile-address'
-                })
-              }
-              
-            }
-          });
-        }
-      })
-}
+    function removeUserAddress(addressId, userId) {
+
+
+        swal({
+            title: "Are you sure?",
+            text: "Do you want to delete the offer?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: "/remove-user-address",
+                        method: "POST",
+                        data: {
+                            user: userId,
+                            address: addressId,
+
+                        },
+                        success: (result) => {
+                            if (result) {
+                                swal("Offer deleted Successfully", {
+                                    icon: "success",
+                                }).then((ok) => {
+                                    location.href = '/user-profile-address'
+                                })
+                            }
+
+                        }
+                    });
+                }
+            })
+    }
 
 </script>
 
@@ -214,52 +220,58 @@ function removeUserAddress(addressId,userId){
 
 
 <!-- Modal -->
-<div class="modal fade " id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog " role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle" style="color:rgb(96, 92, 92) ;">Edit Address</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-     <div class="modal-body">
- {{#each address}}
-<form action="/edit-user-address/{{this._id}}" method="post" >
- 
-  <div class="mt-3">
-    <label for="" class="form-label">Name :</label>
-    <input type="text" name="name" value="{{this.name}}" class="form-control text-secondary" required>
+<div class="modal fade " id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="color:rgb(96, 92, 92) ;">Edit Address</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{#each address}}
+                <form action="/edit-user-address/{{this._id}}" method="post">
+
+                    <div class="mt-3">
+                        <label for="" class="form-label">Name :</label>
+                        <input type="text" name="name" value="{{this.name}}" class="form-control text-secondary"
+                            required>
+                    </div>
+                    <div class="mt-3">
+                        <label for="" class="form-label">Address:</label>
+                        <input type="text" name="address" value="{{this.address}}" class="form-control text-secondary"
+                            id="exampleInputPassword1" required>
+                    </div>
+                    <div class="mt-3">
+                        <label for="" class="form-label">State:</label>
+                        <input type="text" name="state" value="{{this.state}}" class="form-control text-secondary"
+                            id="exampleInputPassword1" required>
+                    </div>
+
+
+                    <div class="mt-3">
+                        <label for="" class="form-label">Pincode:</label>
+                        <input type="text" name="pincode" value="{{this.pincode}}" class="form-control text-secondary"
+                            id="exampleInputPassword1" required>
+                    </div>
+
+                    <div class="mt-3">
+                        <label for="" class="form-label">City:</label>
+                        <input type="text" name="city" value="{{this.city}}" class="form-control text-secondary"
+                            id="exampleInputPassword1" required>
+                    </div>
+                    {{/each}}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-warning">Submit</button>
+            </div>
+            </form>
+        </div>
+
+
     </div>
-  <div class="mt-3">
-    <label for="" class="form-label">Address:</label>
-    <input type="text" name="address" value="{{this.address}}" class="form-control text-secondary" id="exampleInputPassword1" required>
-  </div>
-   <div class="mt-3">
-    <label for="" class="form-label">State:</label>
-    <input type="text" name="state" value="{{this.state}}" class="form-control text-secondary" id="exampleInputPassword1" required>
-  </div>
-
-
-  <div class="mt-3">
-    <label for="" class="form-label">Pincode:</label>
-    <input type="text" name="pincode" value="{{this.pincode}}" class="form-control text-secondary" id="exampleInputPassword1" required>
-  </div>
- 
-  <div class="mt-3">
-    <label for="" class="form-label">City:</label>
-    <input type="text" name="city" value="{{this.city}}" class="form-control text-secondary" id="exampleInputPassword1" required>
-  </div>
-  {{/each}}
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-warning"  >Submit</button>
-      </div>
-</form>
-    </div>
-
-
-  </div>
 </div>

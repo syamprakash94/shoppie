@@ -15,9 +15,10 @@
         {{#each banner}}
         <tr>
           <th scope="row">{{inc @index}}</th>
-          <td><img style="width: 50px; hieght: 50px;" src="/images/{{this.img.[0]}}" alt=""> 
-          <img style="width: 50px; hieght: 50px;" src="/images/{{this.img.[1]}}" alt=""> 
-          <img style="width: 50px; hieght: 50px;" src="/images/{{this.img.[2]}}" alt=""> </td>
+          <td><img style="width: 50px; hieght: 50px;" src="/images/{{this.img.[0]}}" alt="">
+            <img style="width: 50px; hieght: 50px;" src="/images/{{this.img.[1]}}" alt="">
+            <img style="width: 50px; hieght: 50px;" src="/images/{{this.img.[2]}}" alt="">
+          </td>
 
           <td>
             <button class="btn btn-light text-danger" onclick="deleteBanner('{{this._id}}')">delete</button>

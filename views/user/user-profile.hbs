@@ -9,12 +9,9 @@
           <div class="card-body">
 
             <div class="d-flex flex-column align-items-center text-center">
-              {{!-- {{#each user }} --}}
-              <img src="/images/{{profile.image.[0]}}" alt="pic" width="150">
-              {{!-- {{/each}} --}}
 
-              {{!-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
-                width="150"> --}}
+              <img src="/images/{{profile.image.[0]}}" alt="pic" width="150">
+
               <a><i class="fa-solid fa-pen-to-square" data-toggle="modal" data-target="#exampleModal"></i></a>
 
 
@@ -22,9 +19,7 @@
 
                 <h4>{{profile.name}}</h4>
                 <h6 class="text-secondary">{{profile.email}}</h6>
-                {{!-- <a class="text-primary">Referral Id:<br>{{referalLink}}</a> --}}
 
-                {{!-- <button class="btn btn-outline-primary">Message</button> --}}
               </div>
 
             </div>
@@ -40,11 +35,6 @@
           <div class="card-body">
 
             <div class="d-flex flex-column align-items-center text-center">
-
-
-              {{!-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
-                width="150"> --}}
-
 
               <div class="mt-3">
 
@@ -83,16 +73,6 @@
               </div>
             </div>
             <hr>
-            {{!-- <div class="row">
-              <div class="col-sm-3">
-                <h6 class="mb-0">Phone</h6>
-              </div>
-              <div class="col-sm-9 text-secondary">
-                (239) 816-9029
-              </div>
-            </div> --}}
-            {{!--
-            <hr> --}}
             <div class="row">
               <div class="col-sm-3">
                 <h6 class="mb-0">Mobile</h6>
@@ -106,14 +86,8 @@
               <div class="col-sm-3">
                 <a class="mb-0" href="/user-profile-address">Address</a>
               </div>
-              {{!-- <div class="col-sm-9 text-secondary">
-                Bay Area, San Francisco, CA
-              </div> --}}
             </div>
             <hr>
-
-
-
             <div class="row">
               <div class="col-sm-12">
                 <a class="btn btn-warning" href="/user-edit-profile">Edit</a>
@@ -121,11 +95,6 @@
             </div>
           </div>
         </div>
-
-
-
-
-
       </div>
     </div>
 
@@ -194,10 +163,6 @@
     box-shadow: none !important;
   }
 </style>
-
-{{!--edit- popup --}}
-<!-- Button trigger modal -->
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
